@@ -21,7 +21,7 @@ class MovieItemList extends React.Component {
       element: {
         children: [
           <MovieItem key={`movie-${movie.id}__container`} movie={movie}/>,
-          <span key={`movie-${movie.id}__icon`}>{" <>"}</span>
+          <span className="movie-item__handle" key={`movie-${movie.id}__icon`}>{" <O>"}</span>
         ],
         parentWrapperTag: 'div',
         handleElementIndex: 1

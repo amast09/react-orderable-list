@@ -56,14 +56,15 @@ const dragSourceCollect = (connect, monitor) => ({
 class DraggableItem extends Component {
 
   render() {
-    const { element, connectDragSource, connectDropTarget, connectDragPreview, id } = this.props;
+    const { element, isDragging, connectDragSource, connectDropTarget, connectDragPreview, id } = this.props;
+    const opacity = isDragging ? 0 : 1;
     let item;
 
     if (element.handleElementIndex !== undefined) {
       element.children[element.handleElementIndex] = connectDragSource(element.children[element.handleElementIndex]);
-      item = connectDragPreview(connectDropTarget(<element.parentWrapperTag key={id}>{element.children}</element.parentWrapperTag>));
+      item = connectDragPreview(connectDropTarget(<element.parentWrapperTag style={{ opacity }} key={id}>{element.children}</element.parentWrapperTag>));
     } else {
-      item = connectDragSource(connectDropTarget(<element.parentWrapperTag key={id}>{element.children}</element.parentWrapperTag>));
+      item = connectDragSource(connectDropTarget(<element.parentWrapperTag style={{ opacity }} key={id}>{element.children}</element.parentWrapperTag>));
     }
 
     return item;
